@@ -19,13 +19,6 @@ import FloatingCube from "@/components/animations/FloatingCube";
 import FloatingCode from "@/components/animations/FloatingCode";
 import FloatingIcons from "@/components/animations/FloatingIcons";
 
-const clientLogos = [
-  "/placeholder.svg",
-  "/placeholder.svg",
-  "/placeholder.svg",
-  "/placeholder.svg",
-  "/placeholder.svg",
-];
 
 const testimonials = [
   {
