@@ -12,7 +12,7 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <img 
-                src="/lovable-uploads/3ff75003-ae8f-4e6f-951b-8de4da9e4d69.png" 
+                src="/lovable-uploads/logo.png" 
                 alt="WebTech Strategies Logo" 
                 className="h-12 w-auto"
               />

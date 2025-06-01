@@ -126,29 +126,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Client Logos Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h3 className="text-lg text-gray-600 mb-2">Trusted by Industry Leaders</h3>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {clientLogos.map((logo, index) => (
-              <motion.img
-                key={index}
-                src={logo}
-                alt="Client logo"
-                className="h-12 md:h-16 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section className="py-20 bg-tech-light">
         <div className="container mx-auto px-4">
