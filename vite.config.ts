@@ -8,7 +8,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    historyApiFallback: true,
   },
+  // Add base URL if deploying to a subdirectory
+  base: '/',
   plugins: [
     react(),
     mode === 'development' &&

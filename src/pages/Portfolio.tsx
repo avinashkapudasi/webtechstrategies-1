@@ -162,12 +162,13 @@ const Portfolio = () => {
       </section>
 
       {/* Industries Served */}
-      <section className="py-20 bg-tech-light dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <SectionHeading
-            title="Industries We Serve"
+      <section className="py-20 bg-tech-light dark:bg-gray-800 dark:text-white">
+        <div className="container mx-auto px-4 ">
+          <SectionHeading 
+            title="Industries We Serve" 
             subtitle="We've worked with clients across diverse sectors, delivering tailored digital solutions for their unique needs."
             centered={true}
+            className="text-white"
           />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
