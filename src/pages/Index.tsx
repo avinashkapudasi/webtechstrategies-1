@@ -45,7 +45,7 @@ const testimonials = [
     company: "Kotharu Ventures",
     content:
       "The SEO and digital marketing services provided by Web Tech Strategies have been instrumental in growing our organic traffic. Their team is knowledgeable, responsive, and result-oriented.",
-    image: "public/dorababukotharu.png",
+    image: "/dorababukotharu.png",
     stars: 5,
   },
 ];
