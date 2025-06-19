@@ -13,8 +13,8 @@ const portfolioItems = [
     title: "Sai Manikanta Constructions",
     description:
       "Construction company website with portfolio showcase and service listings.",
-    image:
-      "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+      image:
+      "/sai_manikanta_constructions.jpg",
     tags: ["Construction", "Web Development", "Portfolio"],
     link: "https://saimanikantaconstructions.com/",
     category: "Web App",
@@ -26,7 +26,7 @@ const portfolioItems = [
     description:
       "Modern web application with responsive design and seamless user experience.",
     image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    "/kotharu.png",
     tags: ["Web App", "React", "UI/UX"],
     link: "https://big-amber.vercel.app/",
     category: "Web App",
@@ -37,9 +37,9 @@ const portfolioItems = [
     title: "Amaravathi Art Festival",
     description:
       "Cultural event website showcasing art exhibitions and festival information.",
-    image:
-      "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    tags: ["Event", "Web Development", "Arts"],
+      image:
+      "/amaravathi.jpg",
+      tags: ["Event", "Web Development", "Arts"],
     link: "https://www.amaravathiartfestival.com",
     category: "Web App",
     externalLink: true,
@@ -79,6 +79,7 @@ const portfolioItems = [
     link: "/portfolio/foodfast",
     category: "E-commerce",
     externalLink: false,
+    
   },
 ];
 
@@ -191,56 +192,7 @@ const Portfolio = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-tech-slate text-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <h3 className="text-4xl font-bold mb-2 text-tech-blue">100+</h3>
-              <p className="text-lg text-gray-300">Successful Projects</p>
-            </motion.div>
-
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-4xl font-bold mb-2 text-tech-blue">98%</h3>
-              <p className="text-lg text-gray-300">Client Satisfaction</p>
-            </motion.div>
-
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <h3 className="text-4xl font-bold mb-2 text-tech-blue">15+</h3>
-              <p className="text-lg text-gray-300">Industries Served</p>
-            </motion.div>
-
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <h3 className="text-4xl font-bold mb-2 text-tech-blue">12</h3>
-              <p className="text-lg text-gray-300">Industry Awards</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
