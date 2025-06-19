@@ -22,30 +22,30 @@ import FloatingIcons from "@/components/animations/FloatingIcons";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Marketing Director",
-    company: "TechForward Inc",
+    name: "Sharma",
+    role: "CEO",
+    company: "SABPO Solutions",
     content:
       "Web Tech Strategies transformed our online presence. Their team delivered a beautiful website that perfectly captures our brand and has significantly increased our conversion rates.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
+    image: "#",
     stars: 5,
   },
   {
-    name: "Michael Chen",
+    name: "Surya",
     role: "CEO",
-    company: "GrowthApp",
+    company: "Team Surya",
     content:
-      "The mobile app development team at Web Tech Strategies exceeded our expectations. They took our concept and turned it into a beautiful, functional app that our users love.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
+      "The Web app development team at Web Tech Strategies exceeded our expectations. They took our concept and turned it into a beautiful, functional app that our users love.",
+    image: "/surya.jpg",
     stars: 5,
   },
   {
-    name: "Emily Martinez",
-    role: "Product Manager",
-    company: "EcoSolutions",
+    name: "Dorababu Kotharu",
+    role: "Director",
+    company: "Kotharu Ventures",
     content:
       "The SEO and digital marketing services provided by Web Tech Strategies have been instrumental in growing our organic traffic. Their team is knowledgeable, responsive, and result-oriented.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
+    image: "public/dorababukotharu.png",
     stars: 5,
   },
 ];

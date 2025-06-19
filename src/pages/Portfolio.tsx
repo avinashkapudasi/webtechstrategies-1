@@ -58,29 +58,29 @@ const portfolioItems = [
   },
   {
     id: 5,
-    title: "GreenHome Smart Living",
-    description:
-      "IoT dashboard for managing smart home devices with energy consumption analytics.",
     image:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    tags: ["IoT", "Dashboard", "React"],
-    link: "/portfolio/greenhome",
+      "/teamsurya.png",
+    title: "Team Surya",
+    description:
+      "From traditional weddings to grand cultural events, Team Surya transforms your special moments into unforgettable memories with authentic Indian traditions and modern elegance.",
+    tags: ["Dashboard", "React"],
+    link: "https://www.teamsurya.in/",
     category: "Web App",
-    externalLink: false,
+    externalLink: true,
   },
-  {
-    id: 6,
-    title: "FoodFast Delivery Service",
-    description:
-      "Food delivery platform with real-time order tracking and restaurant management.",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    tags: ["E-commerce", "Mobile App", "React Native"],
-    link: "/portfolio/foodfast",
-    category: "E-commerce",
-    externalLink: false,
-    
-  },
+  // {
+  //   id: 6,
+  //   title: "FoodFast Delivery Service",
+  //   description:
+  //     "Food delivery platform with real-time order tracking and restaurant management.",
+  //   image:
+  //     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+  //   tags: ["E-commerce", "Mobile App", "React Native"],
+  //   link: "/portfolio/foodfast",
+  //   category: "E-commerce",
+  //   externalLink: false,
+
+  // },
 ];
 
 const categories = ["All", "Web App", "Mobile App", "E-commerce", "UI/UX Design"];
