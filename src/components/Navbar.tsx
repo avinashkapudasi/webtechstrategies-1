@@ -78,12 +78,6 @@ const Navbar = () => {
               Portfolio
             </Link>
             <Link
-              to="/blog"
-              className="font-medium text-gray-700 hover:text-tech-blue transition-colors dark:text-gray-300 dark:hover:text-tech-blue"
-            >
-              Blog
-            </Link>
-            <Link
               to="/contact"
               className="font-medium text-gray-700 hover:text-tech-blue transition-colors dark:text-gray-300 dark:hover:text-tech-blue"
             >
@@ -175,13 +169,6 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Portfolio
-            </Link>
-            <Link
-              to="/blog"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-tech-blue hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-              onClick={toggleMenu}
-            >
-              Blog
             </Link>
             <Link
               to="/contact"

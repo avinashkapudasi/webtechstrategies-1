@@ -142,7 +142,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Services Overview & Detailed View Combined */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeading
@@ -151,111 +151,101 @@ const Services = () => {
             centered={true}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                className={`bg-white p-8 rounded-xl shadow-lg border-2 ${
-                  activeService.id === service.id
-                    ? "border-tech-blue"
-                    : "border-transparent"
-                } cursor-pointer`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setActiveService(service)}
-              >
-                <div
-                  className={`w-14 h-14 ${service.color} rounded-lg flex items-center justify-center text-white mb-4`}
-                >
-                  <service.icon size={24} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-tech-slate">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <Button
-                  variant="ghost"
-                  className="text-tech-blue hover:text-tech-blue/80 p-0 flex items-center"
+          <div className="flex flex-col lg:flex-row gap-8 mt-12 bg-tech-light rounded-xl shadow-lg overflow-hidden">
+            {/* Left: Service List */}
+            <div className="lg:w-1/3 border-r border-gray-200 bg-white p-6 flex flex-col gap-2">
+              <h3 className="text-xl font-bold mb-4 text-tech-slate">Choose a Service</h3>
+              {services.map((service, index) => (
+                <motion.button
+                  key={service.id}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all font-medium text-tech-slate hover:bg-tech-blue/10 focus:outline-none ${
+                    activeService.id === service.id ? "bg-tech-blue/10 border-l-4 border-tech-blue" : ""
+                  }`}
                   onClick={() => setActiveService(service)}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  Learn More
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div className={`w-8 h-8 ${service.color} rounded-lg flex items-center justify-center text-white`}>
+                    <service.icon size={16} />
+                  </div>
+                  <span>{service.title}</span>
+                </motion.button>
+              ))}
+            </div>
 
-      {/* Detailed Service View */}
-      <section className="py-20 bg-tech-light">
-        <div className="container mx-auto px-4">
-          <motion.div
-            key={activeService.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-xl shadow-xl p-8 lg:p-12"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <div
-                  className={`w-16 h-16 ${activeService.color} rounded-lg flex items-center justify-center text-white mb-6`}
-                >
-                  <activeService.icon size={32} />
-                </div>
-                <h2 className="text-3xl font-bold mb-4 text-tech-slate">{activeService.title}</h2>
-                <p className="text-lg text-gray-700 mb-6">{activeService.description}</p>
-                
-                <h3 className="text-xl font-semibold mb-4 text-tech-slate">What We Offer</h3>
-                <ul className="space-y-3 mb-8">
-                  {activeService.details.map((detail, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-start"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
+            {/* Right: Detailed Service View */}
+            <div className="flex-1 p-8">
+              <motion.div
+                key={activeService.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="h-full"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+                  <div>
+                    <div
+                      className={`w-16 h-16 ${activeService.color} rounded-lg flex items-center justify-center text-white mb-6`}
                     >
-                      <CheckCircle className="h-5 w-5 text-tech-blue mt-1 mr-2" />
-                      <span className="text-gray-700">{detail}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                      <activeService.icon size={32} />
+                    </div>
+                    <h2 className="text-3xl font-bold mb-4 text-tech-slate">{activeService.title}</h2>
+                    <p className="text-lg text-gray-700 mb-6">{activeService.description}</p>
+                    
+                    <h3 className="text-xl font-semibold mb-4 text-tech-slate">What We Offer</h3>
+                    <ul className="space-y-3 mb-8">
+                      {activeService.details.map((detail, index) => (
+                        <motion.li 
+                          key={index}
+                          className="flex items-start"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                        >
+                          <CheckCircle className="h-5 w-5 text-tech-blue mt-1 mr-2" />
+                          <span className="text-gray-700">{detail}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
 
-                <h3 className="text-xl font-semibold mb-4 text-tech-slate">Technologies We Use</h3>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {activeService.technologies.map((tech, index) => (
-                    <motion.span
-                      key={index}
-                      className="bg-tech-light text-tech-slate px-3 py-1 rounded-full text-sm"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </div>
+                    <h3 className="text-xl font-semibold mb-4 text-tech-slate">Technologies We Use</h3>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {activeService.technologies.map((tech, index) => (
+                        <motion.span
+                          key={index}
+                          className="bg-gray-100 text-tech-slate px-3 py-1 rounded-full text-sm"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
 
-                <Button className="bg-tech-blue hover:bg-tech-blue/90 text-white">
-                  <Link to="/contact">Request a Quote</Link>
-                </Button>
-              </div>
-              <div className="relative h-full min-h-[300px] rounded-xl overflow-hidden shadow-lg">
-                <img
-                  src={`https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80`}
-                  alt={activeService.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="text-xl font-semibold mb-2">{activeService.title}</h3>
-                    <p className="text-white/80">Delivering exceptional results for our clients.</p>
+                    <Button className="bg-tech-blue hover:bg-tech-blue/90 text-white">
+                      <Link to="/contact">Request a Quote</Link>
+                    </Button>
+                  </div>
+                  <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-lg">
+                    <img
+                      src={`https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80`}
+                      alt={activeService.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                      <div className="p-6 text-white">
+                        <h3 className="text-xl font-semibold mb-2">{activeService.title}</h3>
+                        <p className="text-white/80">Delivering exceptional results for our clients.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -413,8 +403,7 @@ const Services = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-tech-slate"
+                className="bg-tech-blue hover:bg-tech-blue/90 text-white"
               >
                 <Link to="/portfolio">View Our Work</Link>
               </Button>

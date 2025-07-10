@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { motion } from "framer-motion";
-import PortfolioCard from "@/components/PortfolioCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { X, ExternalLink } from "lucide-react";
 
 const portfolioItems = [
   {
@@ -83,23 +83,20 @@ const portfolioItems = [
   // },
 ];
 
-const categories = ["All", "Web App", "Mobile App", "E-commerce", "UI/UX Design"];
-
 const Portfolio = () => {
-  const [filter, setFilter] = useState("All");
-  const [filteredItems, setFilteredItems] = useState(portfolioItems);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    if (filter === "All") {
-      setFilteredItems(portfolioItems);
-    } else {
-      setFilteredItems(
-        portfolioItems.filter((item) => item.category === filter)
-      );
-    }
-  }, [filter]);
+  }, []);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
 
   return (
     <Layout>
@@ -126,41 +123,127 @@ const Portfolio = () => {
       {/* Portfolio Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={filter === category ? "default" : "outline"}
-                className={
-                  filter === category
-                    ? "bg-tech-blue hover:bg-tech-blue/90"
-                    : "border-tech-blue text-tech-blue hover:bg-tech-blue/10 dark:text-white dark:border-tech-blue/50"
-                }
-                onClick={() => setFilter(category)}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+          <SectionHeading 
+            title="Our Work" 
+            subtitle="Discover our portfolio of successful projects and digital solutions."
+            centered={true}
+          />
 
-          {/* Portfolio Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item, index) => (
-              <PortfolioCard
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                image={item.image}
-                tags={item.tags}
-                link={item.link}
-                index={index}
-                externalLink={item.externalLink}
-              />
-            ))}
-          </motion.div>
+          {/* Infinite Scroll Gallery */}
+          <div className="relative overflow-hidden">
+            <div 
+              className="flex gap-8 animate-scroll"
+              style={{
+                width: `${portfolioItems.length * 280}px`,
+                animationDuration: `${portfolioItems.length * 3}s`
+              }}
+            >
+              {/* Triple items for seamless loop */}
+              {[...portfolioItems, ...portfolioItems, ...portfolioItems].map((item, index) => (
+                <motion.div
+                  key={`${item.id}-${index}`}
+                  className="flex-shrink-0 w-64 h-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-500 ease-out"
+                  onClick={() => handleItemClick(item)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="w-full h-full relative">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Only show overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <div className="p-4 text-white">
+                        <h3 className="text-sm font-semibold mb-1">{item.title}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Modal for Selected Item */}
+      {selectedItem && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto"
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-2xl font-bold text-tech-slate dark:text-white">
+                  {selectedItem.title}
+                </h2>
+                <button
+                  onClick={closeModal}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                </div>
+                
+                <div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    {selectedItem.description}
+                  </p>
+                  
+                  <div className="mb-4">
+                    <h4 className="text-lg font-semibold mb-2 text-tech-slate dark:text-white">
+                      Technologies Used
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedItem.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="bg-tech-light dark:bg-gray-700 text-tech-slate dark:text-white px-3 py-1 rounded-full text-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <h4 className="text-lg font-semibold mb-2 text-tech-slate dark:text-white">
+                      Category
+                    </h4>
+                    <span className="bg-tech-blue/10 text-tech-blue px-3 py-1 rounded-full text-sm">
+                      {selectedItem.category}
+                    </span>
+                  </div>
+                  
+                  {selectedItem.externalLink && (
+                    <a
+                      href={selectedItem.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-tech-blue hover:bg-tech-blue/90 text-white px-4 py-2 rounded-lg transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      View Live Project
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Industries Served */}
       <section className="py-20 bg-tech-light dark:bg-gray-800 dark:text-white">
