@@ -147,14 +147,14 @@ const Portfolio = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="w-full h-full relative">
+                  <div className="w-full h-full relative p-4">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain rounded-md"
                     />
                     {/* Only show overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end rounded-lg">
                       <div className="p-4 text-white">
                         <h3 className="text-sm font-semibold mb-1">{item.title}</h3>
                       </div>
@@ -189,11 +189,11 @@ const Portfolio = () => {
               </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div>
+                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.title}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-64 object-contain rounded-md"
                   />
                 </div>
                 
